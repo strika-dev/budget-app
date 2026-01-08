@@ -1,6 +1,3 @@
-// Budget Manager - Neo-Brutalist Editorial Design
-// A human-crafted aesthetic: Swiss grid + editorial magazine + raw brutalism
-
 import React, { useState, useCallback, useMemo } from 'react';
 
 // ═══════════════════════════════════════════════════════════
@@ -23,34 +20,34 @@ const C = {
 
 const CATEGORIES = {
   income: [
-    { id: 'salary', label: 'Salaire', mark: '■' },
+    { id: 'salary', label: 'Salary', mark: '■' },
     { id: 'freelance', label: 'Freelance', mark: '◆' },
-    { id: 'investment', label: 'Placements', mark: '▲' },
-    { id: 'gift', label: 'Dons reçus', mark: '●' },
-    { id: 'other_income', label: 'Autres', mark: '○' },
+    { id: 'investment', label: 'Investments', mark: '▲' },
+    { id: 'gift', label: 'Gifts', mark: '●' },
+    { id: 'other_income', label: 'Other', mark: '○' },
   ],
   expense: [
-    { id: 'housing', label: 'Logement', mark: '■' },
-    { id: 'food', label: 'Alimentation', mark: '●' },
+    { id: 'housing', label: 'Housing', mark: '■' },
+    { id: 'food', label: 'Food', mark: '●' },
     { id: 'transport', label: 'Transport', mark: '▶' },
-    { id: 'utilities', label: 'Factures', mark: '◇' },
-    { id: 'health', label: 'Santé', mark: '+' },
-    { id: 'entertainment', label: 'Loisirs', mark: '★' },
-    { id: 'shopping', label: 'Achats', mark: '◆' },
-    { id: 'education', label: 'Formation', mark: '▲' },
-    { id: 'savings', label: 'Épargne', mark: '◐' },
-    { id: 'other_expense', label: 'Divers', mark: '○' },
+    { id: 'utilities', label: 'Utilities', mark: '◇' },
+    { id: 'health', label: 'Health', mark: '+' },
+    { id: 'entertainment', label: 'Entertainment', mark: '★' },
+    { id: 'shopping', label: 'Shopping', mark: '◆' },
+    { id: 'education', label: 'Education', mark: '▲' },
+    { id: 'savings', label: 'Savings', mark: '◐' },
+    { id: 'other_expense', label: 'Other', mark: '○' },
   ],
 };
 
-const MOIS = ['JAN', 'FÉV', 'MAR', 'AVR', 'MAI', 'JUN', 'JUL', 'AOÛ', 'SEP', 'OCT', 'NOV', 'DÉC'];
+const MOIS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
 // ═══════════════════════════════════════════════════════════
 // UTILITIES
 // ═══════════════════════════════════════════════════════════
 
-const fmt = (n) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
-const fmtDate = (d) => new Date(d).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' });
+const fmt = (n) => new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 }).format(n);
+const fmtDate = (d) => new Date(d).toLocaleDateString('en-CA', { day: '2-digit', month: 'short' });
 const today = () => new Date().toISOString().split('T')[0];
 const uid = () => Math.random().toString(36).slice(2, 11);
 const pct = (v, t) => t === 0 ? 0 : Math.round((v / t) * 100);
@@ -81,8 +78,8 @@ const sampleData = () => {
   for (let m = 0; m < 4; m++) {
     const mo = new Date(now.getFullYear(), now.getMonth() - m, 1);
     const yy = mo.getFullYear(), mm = mo.getMonth();
-    txs.push({ id: uid(), type: 'income', category: 'salary', amount: 3200 + Math.floor(Math.random() * 300), description: 'Salaire', date: `${yy}-${String(mm + 1).padStart(2, '0')}-05` });
-    if (Math.random() > 0.5) txs.push({ id: uid(), type: 'income', category: 'freelance', amount: 400 + Math.floor(Math.random() * 600), description: 'Mission', date: `${yy}-${String(mm + 1).padStart(2, '0')}-${10 + Math.floor(Math.random() * 15)}` });
+    txs.push({ id: uid(), type: 'income', category: 'salary', amount: 3200 + Math.floor(Math.random() * 300), description: 'Monthly salary', date: `${yy}-${String(mm + 1).padStart(2, '0')}-05` });
+    if (Math.random() > 0.5) txs.push({ id: uid(), type: 'income', category: 'freelance', amount: 400 + Math.floor(Math.random() * 600), description: 'Project', date: `${yy}-${String(mm + 1).padStart(2, '0')}-${10 + Math.floor(Math.random() * 15)}` });
     const expenses = [['housing', 950], ['food', 380], ['transport', 120], ['utilities', 95], ['entertainment', 60], ['shopping', 150]];
     expenses.forEach(([cat, base]) => {
       txs.push({ id: uid(), type: 'expense', category: cat, amount: base + Math.floor(Math.random() * 80), description: '', date: `${yy}-${String(mm + 1).padStart(2, '0')}-${1 + Math.floor(Math.random() * 27)}` });
@@ -119,9 +116,9 @@ const useBudget = () => {
 
 const Header = ({ view, setView }) => {
   const tabs = [
-    { id: 'dashboard', label: 'Aperçu' },
-    { id: 'transactions', label: 'Opérations' },
-    { id: 'stats', label: 'Statistiques' },
+    { id: 'dashboard', label: 'Overview' },
+    { id: 'transactions', label: 'Transactions' },
+    { id: 'stats', label: 'Statistics' },
   ];
 
   return (
@@ -151,7 +148,7 @@ const Header = ({ view, setView }) => {
           color: C.inkFaded,
           marginTop: '4px',
         }}>
-          Finances personnelles
+          Personal finances
         </div>
       </div>
 
@@ -231,18 +228,18 @@ const StatsBar = ({ totals, count }) => (
     flexWrap: 'wrap',
   }}>
     <StatBlock 
-      label="Solde actuel" 
+      label="Current balance" 
       value={fmt(totals.bal)} 
       accent={totals.bal >= 0 ? C.green : C.red}
     />
     <StatBlock 
-      label="Entrées" 
+      label="Income" 
       value={fmt(totals.inc)} 
       sub={`${count} transactions`}
       accent={C.green}
     />
     <StatBlock 
-      label="Sorties" 
+      label="Expenses" 
       value={fmt(totals.exp)} 
       accent={C.red}
     />
@@ -318,7 +315,7 @@ const TxForm = ({ onSubmit }) => {
           margin: 0,
           color: C.ink,
         }}>
-          Nouvelle opération
+          New transaction
         </h2>
         
         <div style={{ display: 'flex' }}>
@@ -339,7 +336,7 @@ const TxForm = ({ onSubmit }) => {
                 cursor: 'pointer',
               }}
             >
-              {t === 'expense' ? '− Dépense' : '+ Revenu'}
+              {t === 'expense' ? '− Expense' : '+ Income'}
             </button>
           ))}
         </div>
@@ -359,7 +356,7 @@ const TxForm = ({ onSubmit }) => {
             color: C.inkFaded,
             display: 'block',
             marginBottom: '8px',
-          }}>Montant €</label>
+          }}>Amount $</label>
           <input
             type="number"
             value={data.amount}
@@ -378,13 +375,13 @@ const TxForm = ({ onSubmit }) => {
             color: C.inkFaded,
             display: 'block',
             marginBottom: '8px',
-          }}>Catégorie</label>
+          }}>Category</label>
           <select
             value={data.category}
             onChange={e => setData(d => ({ ...d, category: e.target.value }))}
             style={{ ...inputStyle, cursor: 'pointer' }}
           >
-            <option value="">Choisir...</option>
+            <option value="">Select...</option>
             {cats.map(c => <option key={c.id} value={c.id}>{c.mark} {c.label}</option>)}
           </select>
         </div>
@@ -421,7 +418,7 @@ const TxForm = ({ onSubmit }) => {
             type="text"
             value={data.description}
             onChange={e => setData(d => ({ ...d, description: e.target.value }))}
-            placeholder="Optionnel"
+            placeholder="Optional"
             style={inputStyle}
           />
         </div>
@@ -445,7 +442,7 @@ const TxForm = ({ onSubmit }) => {
           transition: 'background 0.15s ease',
         }}
       >
-        Enregistrer →
+        Save →
       </button>
     </div>
   );
@@ -469,7 +466,7 @@ const TxList = ({ txs, onDelete, filter, setFilter }) => {
           fontWeight: 400,
           margin: 0,
         }}>
-          Historique
+          History
         </h3>
         <div style={{ display: 'flex', gap: '8px' }}>
           {['all', 'income', 'expense'].map(f => (
@@ -488,7 +485,7 @@ const TxList = ({ txs, onDelete, filter, setFilter }) => {
                 cursor: 'pointer',
               }}
             >
-              {f === 'all' ? 'Tout' : f === 'income' ? 'Entrées' : 'Sorties'}
+              {f === 'all' ? 'All' : f === 'income' ? 'Income' : 'Expenses'}
             </button>
           ))}
         </div>
@@ -503,7 +500,7 @@ const TxList = ({ txs, onDelete, filter, setFilter }) => {
           }}>
             <div style={{ fontSize: '32px', marginBottom: '12px' }}>∅</div>
             <div style={{ fontFamily: "'Space Grotesk', system-ui", fontSize: '14px' }}>
-              Aucune opération
+              No transactions
             </div>
           </div>
         ) : txs.map((t, i) => {
@@ -679,7 +676,7 @@ const CategoryPanel = ({ title, data, type }) => {
       
       {total === 0 ? (
         <div style={{ color: C.ghost, textAlign: 'center', padding: '40px 0' }}>
-          Pas de données
+          No data
         </div>
       ) : (
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '32px' }}>
@@ -727,7 +724,7 @@ const CategoryPanel = ({ title, data, type }) => {
   );
 };
 
-const MonthlyChart = ({ data }) => {
+const MonthlyChart = ({ data, title = "Monthly trend" }) => {
   const entries = Object.entries(data).sort((a, b) => a[0].localeCompare(b[0])).slice(-6);
   if (entries.length === 0) return null;
   
@@ -750,17 +747,17 @@ const MonthlyChart = ({ data }) => {
         paddingBottom: '12px',
         borderBottom: `1px solid ${C.cream}`,
       }}>
-        Évolution mensuelle
+        {title}
       </h4>
       
       <div style={{ display: 'flex', gap: '24px', marginBottom: '16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ width: '12px', height: '12px', background: C.green }} />
-          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: C.inkFaded, textTransform: 'uppercase' }}>Entrées</span>
+          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: C.inkFaded, textTransform: 'uppercase' }}>Income</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ width: '12px', height: '12px', background: C.red }} />
-          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: C.inkFaded, textTransform: 'uppercase' }}>Sorties</span>
+          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: C.inkFaded, textTransform: 'uppercase' }}>Expenses</span>
         </div>
       </div>
 
@@ -804,8 +801,8 @@ const Toolbar = ({ onReset, onClear }) => (
     borderBottom: `1px solid ${C.cream}`,
   }}>
     {[
-      { label: '↻ Exemple', action: onReset },
-      { label: '⌫ Effacer', action: onClear },
+      { label: '↻ Sample', action: onReset },
+      { label: '⌫ Clear', action: onClear },
     ].map(b => (
       <button
         key={b.label}
@@ -853,8 +850,8 @@ const DashboardView = ({ totals, count, txs, del, filter, setFilter, expByCat, i
         <TxList txs={txs.slice(0, 8)} onDelete={del} filter={filter} setFilter={setFilter} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', background: C.bg }}>
-        <CategoryPanel title="Répartition des sorties" data={expByCat} type="expense" />
-        <MonthlyChart data={monthly} />
+        <CategoryPanel title="Expense breakdown" data={expByCat} type="expense" />
+        <MonthlyChart data={monthly} title="Monthly trend" />
       </div>
     </div>
   </>
@@ -876,7 +873,7 @@ const StatsView = ({ totals, expByCat, incByCat, monthly }) => (
       margin: '0 0 32px 0',
       color: C.ink,
     }}>
-      Analyse détaillée
+      Detailed analysis
     </h2>
     
     <StatsBar totals={totals} count={0} />
@@ -887,8 +884,8 @@ const StatsView = ({ totals, expByCat, incByCat, monthly }) => (
       gap: '24px',
       marginTop: '24px',
     }}>
-      <CategoryPanel title="Sorties par catégorie" data={expByCat} type="expense" />
-      <CategoryPanel title="Entrées par source" data={incByCat} type="income" />
+      <CategoryPanel title="Expenses by category" data={expByCat} type="expense" />
+      <CategoryPanel title="Income by source" data={incByCat} type="income" />
       <div style={{ gridColumn: '1 / -1' }}>
         <MonthlyChart data={monthly} />
       </div>
@@ -980,7 +977,7 @@ export default function App() {
             fontSize: '10px',
             color: C.ghost,
           }}>
-            Fait avec soin
+            Made with care
           </div>
         </footer>
       </div>
