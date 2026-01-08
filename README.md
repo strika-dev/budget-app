@@ -1,7 +1,8 @@
 # Budget. — Personal Budget Manager
 
 A simple and elegant web application to track your personal finances. Monitor your income, expenses, and savings all in one place.
-<img width="1884" height="933" alt="image" src="https://github.com/user-attachments/assets/d1e7295b-05c1-45e3-bafd-07eb1f20bf9b" />
+<img width="1889" height="950" alt="image" src="https://github.com/user-attachments/assets/ce58fb66-13eb-40ac-8fcf-86605b79010e" />
+
 
 ## What does it do?
 
@@ -12,7 +13,8 @@ A simple and elegant web application to track your personal finances. Monitor yo
 - **Calculating your balance** — See instantly how much money you have left
 - **Visualizing your finances** — Charts show where your money goes each month
 - **Analyzing trends** — Compare income vs expenses over time
-<img width="1887" height="872" alt="image" src="https://github.com/user-attachments/assets/17f7d718-f9ba-4297-9900-9a660f2d2bc5" />
+<img width="1886" height="942" alt="image" src="https://github.com/user-attachments/assets/1f16a5ea-9cc3-4c7d-bb2d-947143e52db3" />
+>
 
 ## Features
 
@@ -46,7 +48,8 @@ A simple and elegant web application to track your personal finances. Monitor yo
 - Savings
 - Other
 
-<img width="1882" height="875" alt="image" src="https://github.com/user-attachments/assets/a98ac0c3-38e8-4693-bc8d-72a8afb2fe35" />
+<img width="1881" height="947" alt="image" src="https://github.com/user-attachments/assets/7452623e-a021-49b4-a939-3ef4c95d61d5" />
+
 
 ## Views
 
