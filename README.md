@@ -58,7 +58,7 @@ The app has 3 main screens:
 
 ---
 
-## 🚀 How to run the project (Windows + VSCode)
+## How to run the project (Windows + VSCode)
 
 ### Prerequisites: Install Node.js
 
@@ -79,7 +79,7 @@ You should see a number like `v20.10.0`
 
 ```
 cd Desktop
-git clone https://github.com/YOUR-USERNAME/budget-app.git
+git clone https://github.com/strika-dev/budget-app.git
 cd budget-app
 npm install
 npm run dev
@@ -89,53 +89,8 @@ Then open **http://localhost:5173** in your browser.
 
 ---
 
-### Run from scratch
-
-#### Step 1: Create the project
-```
-cd Desktop
-npm create vite@latest budget-app -- --template react
-cd budget-app
-npm install
-```
-
-#### Step 2: Replace App.jsx
-1. Open the `budget-app` folder in VSCode
-2. Go to the `src` folder
-3. Open `App.jsx`
-4. Delete everything and paste the content of `BudgetManager.jsx`
-5. Save (Ctrl + S)
-
-#### Step 3: Edit main.jsx
-Replace the content of `src/main.jsx` with:
-```jsx
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
-```
-
-#### Step 4: Run
-```
-npm run dev
-```
-
----
-
-## 🌐 Deploy on Vercel
-
-1. Push your code to GitHub
-2. Go to **https://vercel.com**
-3. Sign up with GitHub
-4. Click **Import** next to your repo
-5. Click **Deploy**
-
-Your app will be live at `https://your-app.vercel.app`
+### Run on Vercel
+The app is live at `https://budget-app-aboubakrine.vercel.app`
 
 ---
 
