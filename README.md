@@ -1,87 +1,16 @@
-# Budget. — Gestionnaire de Budget Personnel
+# React + Vite
 
-Un gestionnaire de finances avec une esthétique **néo-brutalist éditorial** inspirée du design suisse et des magazines.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Direction Esthétique
+Currently, two official plugins are available:
 
-**Style choisi** : Neo-Brutalist Editorial — un mélange de rigueur suisse, d'esthétique magazine et de brutalisme brut.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Principes de design appliqués :
+## React Compiler
 
-- **Fond papier crème** (#F5F0E8) au lieu des fonds sombres génériques
-- **Typographie expressive** : Instrument Serif pour les titres, Space Grotesk pour le corps, IBM Plex Mono pour les données
-- **Bordures épaisses noires** (3px) créant une grille visible
-- **Une seule couleur d'accent** (coral #FF5A36) utilisée avec parcimonie
-- **Formes géométriques** (■ ◆ ▲ ●) au lieu d'emojis
-- **Asymétrie contrôlée** dans les layouts
-- **Espace négatif dramatique**
-- **Pas de coins arrondis excessifs** — angulaire et intentionnel
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Structure Modulaire
+## Expanding the ESLint configuration
 
-```
-src/
-├── components/
-│   ├── Header.jsx        # Navigation avec tabs brutalist
-│   ├── Summary.jsx       # Blocs statistiques avec bordures
-│   ├── TransactionForm.jsx  # Formulaire grid strict
-│   ├── TransactionList.jsx  # Liste avec marques géométriques
-│   └── Charts.jsx        # Visualisations SVG minimalistes
-├── hooks/
-│   └── useBudget.js      # État centralisé
-├── utils/
-│   └── helpers.js        # Fonctions pures
-├── styles/
-│   └── theme.js          # Tokens de design
-└── App.jsx               # Orchestration
-```
-
-## Palette
-
-| Nom | Hex | Usage |
-|-----|-----|-------|
-| Paper | #FFFDF9 | Surface principale |
-| Cream | #F5F0E8 | Arrière-plan |
-| Ink | #1A1A1A | Texte, bordures |
-| Coral | #FF5A36 | Accent unique |
-| Green | #2D7A4F | Revenus, positif |
-| Red | #C23B3B | Dépenses, négatif |
-
-## Typographie
-
-- **Display** : Instrument Serif — élégance éditoriale
-- **Body** : Space Grotesk — géométrie moderne  
-- **Mono** : IBM Plex Mono — données et labels
-
-## Fonctionnalités
-
-- **Aperçu** : Vue synthétique avec stats et graphiques
-- **Opérations** : Ajout et gestion des transactions
-- **Statistiques** : Analyses détaillées par catégorie
-
-## Anti-patterns évités
-
-Ce design évite délibérément :
-- ❌ Dégradés violets/bleus génériques
-- ❌ Inter, Roboto, ou polices système par défaut
-- ❌ Coins arrondis partout (border-radius: 12px)
-- ❌ Ombres portées excessives
-- ❌ Emojis comme icônes
-- ❌ Grilles symétriques prévisibles
-- ❌ Mode sombre par défaut
-- ❌ Glassmorphism générique
-
-## Installation
-
-```bash
-# Utiliser directement BudgetManager.jsx pour un démo
-# Ou importer les modules individuellement
-
-import App from './src/App';
-```
-
-## Crédits typographiques
-
-- [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif)
-- [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
-- [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
