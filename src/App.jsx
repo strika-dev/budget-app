@@ -1,3 +1,6 @@
+// Budget Manager - Neo-Brutalist Editorial Design
+// A human-crafted aesthetic: Swiss grid + editorial magazine + raw brutalism
+
 import React, { useState, useCallback, useMemo } from 'react';
 
 // ═══════════════════════════════════════════════════════════
